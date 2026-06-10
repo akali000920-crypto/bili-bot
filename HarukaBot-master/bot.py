@@ -23,3 +23,9 @@ nonebot.load_from_toml("pyproject.toml")
 
 if __name__ == "__main__":
     nonebot.run()
+from fastapi import FastAPI
+app: FastAPI = nonebot.get_asgi()
+
+@app.get("/")
+async def health_check():
+    return {"status": "ok"}
